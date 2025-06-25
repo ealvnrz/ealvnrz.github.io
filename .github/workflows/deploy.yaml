@@ -1,0 +1,35 @@
+name: Deploy Astro site to GitHub Pages
+
+on:
+  # Re-run whenever you push to the default branch
+  push:
+    branches: [main]     # ↳ change if your branch isn’t called main
+  workflow_dispatch:      # ↳ lets you trigger it manually
+
+permissions:
+  contents: read          # fetch your code
+  pages: write            # publish to gh-pages
+  id-token: write         # OIDC token for Pages
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4          # pull your repo
+
+      # Build and upload the static files
+      - uses: withastro/action@v4          # ← Astro’s official action
+        # Optional customisations:
+        # with:
+        #   node-version: 22              # or 20, 18…
+        #   package-manager: pnpm@8       # npm|yarn|pnpm|bun (+ version)
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4      # publish the files
