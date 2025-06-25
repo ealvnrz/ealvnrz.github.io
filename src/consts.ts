@@ -3,7 +3,7 @@ import type { IconMap, SocialLink, Site } from '@/types'
 export const SITE: Site = {
   title: 'ealvnrz',
   description:
-    'personal website',
+    'personal website ',
   href: 'https://ealvnrz.github.io',
   author: 'ealvnrz',
   locale: 'en-US',
