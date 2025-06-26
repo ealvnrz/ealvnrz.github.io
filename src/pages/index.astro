@@ -12,55 +12,57 @@ const blog = await getRecentPosts(SITE.featuredPostCount)
 
 <Layout class="max-w-3xl">
   <PageHead slot="head" title="Home" />
-  <section>
-    <div class="rounded-lg border">
-      <div class="flex flex-col space-y-1.5 p-6">
-        <h3 class="text-3xl leading-none font-medium">er·u·dite</h3>
-        <p class="text-muted-foreground text-sm">
-          /ˈer(y)əˌdīt/ &bull; <span class="font-medium">adjective</span>
-        </p>
-      </div>
-      <div class="p-6 pt-0">
-        <p class="text-muted-foreground mb-2 text-sm">
-          astro-erudite is an opinionated, unstyled static blogging template
-          built with <Link
-            href="https://astro.build"
-            class="text-foreground"
-            external
-            underline>Astro</Link
-          >, <Link
-            href="https://tailwindcss.com"
-            class="text-foreground"
-            external
-            underline>Tailwind</Link
-          >, and <Link
-            href="https://ui.shadcn.com"
-            class="text-foreground"
-            external
-            underline>shadcn/ui</Link
-          >. Extraordinarily loosely based on the <Link
-            href="https://astro-micro.vercel.app/"
-            class="text-foreground"
-            external
-            underline>Astro Micro</Link
-          > theme.
-        </p>
-        <p class="text-muted-foreground text-sm">
-          To use this template, check out the <Link
-            href="https://github.com/jktrn/astro-erudite"
-            class="text-foreground"
-            underline
-            external>GitHub</Link
-          > repository. To learn more about why this template exists, read this blog
-          post: <Link
-            href="/blog/the-state-of-static-blogs"
-            class="text-foreground"
-            underline>The State of Static Blogs in 2024</Link
-          >.
-        </p>
-      </div>
+
+  {/* Hero Section */}
+  <section class="mb-8">
+    <div class="rounded-lg border p-6">
+      <h1 class="text-4xl font-bold leading-tight">Your Name</h1>
+      <h2 class="text-2xl text-muted-foreground">Your Title/Position</h2>
+      <p class="text-muted-foreground mt-2">
+        A brief introduction to yourself and your research interests.  For example: "I am a researcher in the field of artificial intelligence, focusing on natural language processing and machine learning."
+      </p>
     </div>
   </section>
+
+  {/* Summary of Research Interests */}
+  <section class="mb-8">
+    <div class="rounded-lg border p-6">
+      <h2 class="text-2xl font-medium mb-4">Research Interests</h2>
+      <p class="text-muted-foreground">
+        A concise overview of your main research areas.  For example: "My research interests include natural language processing, machine learning, deep learning, and computational linguistics. I am particularly interested in developing novel algorithms for text summarization and question answering."
+      </p>
+    </div>
+  </section>
+
+  {/* Featured Publications/Projects */}
+  <section class="mb-8">
+    <h2 class="text-2xl font-medium mb-4">Featured Publications</h2>
+    <ul class="flex flex-col gap-y-4">
+      {/* Replace these with actual publication data */}
+      <li>
+        <Link href="#" class="text-foreground underline">Publication Title 1</Link>
+        <p class="text-sm text-muted-foreground">Brief description of the publication.</p>
+      </li>
+      <li>
+        <Link href="#" class="text-foreground underline">Publication Title 2</Link>
+        <p class="text-sm text-muted-foreground">Brief description of the publication.</p>
+      </li>
+    </ul>
+    <Link href="/publications" class={buttonVariants({ variant: 'ghost' })}>
+      See all publications
+    </Link>
+  </section>
+
+  {/* Link to About Page */}
+  <section class="mb-8">
+    <div class="rounded-lg border p-6">
+      <p class="text-muted-foreground">
+        Learn more about my background and experience on the <Link href="/about" class="text-foreground underline">About page</Link>.
+      </p>
+    </div>
+  </section>
+
+  {/* (Optional) Link to Blog */}
   <section class="flex flex-col gap-y-4">
     <h2 class="text-2xl font-medium">Latest posts</h2>
     <ul class="flex flex-col gap-y-4">
