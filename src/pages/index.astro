@@ -24,34 +24,40 @@ const blog = await getRecentPosts(SITE.featuredPostCount)
     </div>
   </section>
 
-  {/* Summary of Research Interests */}
-  <section class="mb-8">
-    <div class="rounded-lg border p-6">
-      <h2 class="text-2xl font-medium mb-4">Research Interests</h2>
-      <p class="text-muted-foreground">
-        A concise overview of your main research areas.  For example: "My research interests include natural language processing, machine learning, deep learning, and computational linguistics. I am particularly interested in developing novel algorithms for text summarization and question answering."
-      </p>
+  {/* Two-Column Layout */}
+  <div class="grid grid-cols-2 gap-8">
+    {/* About Section */}
+    <div>
+      <section class="mb-8">
+        <div class="rounded-lg border p-6">
+          <h2 class="text-2xl font-medium mb-4">Research Interests</h2>
+          <p class="text-muted-foreground">
+            A concise overview of your main research areas.
+          </p>
+        </div>
+      </section>
     </div>
-  </section>
 
-  {/* Featured Publications/Projects */}
-  <section class="mb-8">
-    <h2 class="text-2xl font-medium mb-4">Featured Publications</h2>
-    <ul class="flex flex-col gap-y-4">
-      {/* Replace these with actual publication data */}
-      <li>
-        <Link href="#" class="text-foreground underline">Publication Title 1</Link>
-        <p class="text-sm text-muted-foreground">Brief description of the publication.</p>
-      </li>
-      <li>
-        <Link href="#" class="text-foreground underline">Publication Title 2</Link>
-        <p class="text-sm text-muted-foreground">Brief description of the publication.</p>
-      </li>
-    </ul>
-    <Link href="/publications" class={buttonVariants({ variant: 'ghost' })}>
-      See all publications
-    </Link>
-  </section>
+    {/* Featured Publications/Projects */}
+    <div>
+      <section class="mb-8">
+        <h2 class="text-2xl font-medium mb-4">Featured Publications</h2>
+        <ul class="flex flex-col gap-y-4">
+          <li>
+            <Link href="#" class="text-foreground underline">Publication Title 1</Link>
+            <p class="text-sm text-muted-foreground">Brief description.</p>
+          </li>
+          <li>
+            <Link href="#" class="text-foreground underline">Publication Title 2</Link>
+            <p class="text-sm text-muted-foreground">Brief description.</p>
+          </li>
+        </ul>
+        <Link href="/publications" class={buttonVariants({ variant: 'ghost' })}>
+          See all publications
+        </Link>
+      </section>
+    </div>
+  </div>
 
   {/* Link to About Page */}
   <section class="mb-8">
