@@ -1,74 +1,61 @@
 ---
-import BlogCard from '@/components/BlogCard.astro'
-import Link from '@/components/Link.astro'
-import PageHead from '@/components/PageHead.astro'
-import { buttonVariants } from '@/components/ui/button'
-import { SITE } from '@/consts'
-import Layout from '@/layouts/Layout.astro'
-import { getRecentPosts } from '@/lib/data-utils'
+import BlogCard from '@/components/BlogCard.astro';
+import Link from '@/components/Link.astro';
+import PageHead from '@/components/PageHead.astro';
+import { buttonVariants } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card';
+import Calendar from '@/components/Calendar.astro';
+import { SITE } from '@/consts';
+import Layout from '@/layouts/Layout.astro';
+import { getRecentPosts } from '@/lib/data-utils';
+import { Astro } from 'astro';
 
-const blog = await getRecentPosts(SITE.featuredPostCount)
+const blog = await getRecentPosts(SITE.featuredPostCount);
 ---
 
-<Layout class="max-w-3xl">
+<Layout class="max-w-7xl">
   <PageHead slot="head" title="Home" />
 
-  {/* Hero Section */}
+  {/* Image and Description Section */}
   <section class="mb-8">
-    <div class="rounded-lg border p-6">
-      <h1 class="text-4xl font-bold leading-tight">Your Name</h1>
-      <h2 class="text-2xl text-muted-foreground">Your Title/Position</h2>
-      <p class="text-muted-foreground mt-2">
-        A brief introduction to yourself and your research interests.  For example: "I am a researcher in the field of artificial intelligence, focusing on natural language processing and machine learning."
-      </p>
-    </div>
-  </section>
-
-  {/* Two-Column Layout */}
-  <div class="grid grid-cols-2 gap-8">
-    {/* About Section */}
-    <div>
-      <section class="mb-8">
-        <div class="rounded-lg border p-6">
-          <h2 class="text-2xl font-medium mb-4">Research Interests</h2>
-          <p class="text-muted-foreground">
-            A concise overview of your main research areas.
+    <div class="flex gap-4">
+      <div class="image-container rounded-xl shadow-sm">
+        <img
+          src="/static/e_sq.jpg"
+          alt="Your Profile Picture"
+          class="rounded-xl" style="width: 100%; height: 100%; object-fit: cover; display: block;"
+        />
+      </div>
+      <Card>
+        <CardContent>
+          <h1 class="text-4xl font-bold leading-tight">Your Name</h1>
+          <h2 class="text-2xl text-muted-foreground">Your Title/Position</h2>
+          <p class="text-muted-foreground mt-2">
+            A brief introduction to yourself and your research interests. For
+            example: "I am a researcher in the field of artificial intelligence,
+            focusing on natural language processing and machine learning."
           </p>
-        </div>
-      </section>
+        </CardContent>
+      </Card>
     </div>
-
-    {/* Featured Publications/Projects */}
-    <div>
-      <section class="mb-8">
-        <h2 class="text-2xl font-medium mb-4">Featured Publications</h2>
-        <ul class="flex flex-col gap-y-4">
-          <li>
-            <Link href="#" class="text-foreground underline">Publication Title 1</Link>
-            <p class="text-sm text-muted-foreground">Brief description.</p>
-          </li>
-          <li>
-            <Link href="#" class="text-foreground underline">Publication Title 2</Link>
-            <p class="text-sm text-muted-foreground">Brief description.</p>
-          </li>
-        </ul>
-        <Link href="/publications" class={buttonVariants({ variant: 'ghost' })}>
-          See all publications
-        </Link>
-      </section>
-    </div>
-  </div>
-
-  {/* Link to About Page */}
-  <section class="mb-8">
-    <div class="rounded-lg border p-6">
-      <p class="text-muted-foreground">
-        Learn more about my background and experience on the <Link href="/about" class="text-foreground underline">About page</Link>.
-      </p>
-    </div>
+    <Calendar />
   </section>
 
-  {/* (Optional) Link to Blog */}
+  {/* Research Interests Section */}
+  <section class="mb-8">
+    <Card>
+      <CardHeader>
+        <h2 class="text-2xl font-medium">Research Interests</h2>
+      </CardHeader>
+      <CardContent>
+        <p class="text-muted-foreground">
+          A concise overview of your main research areas.
+        </p>
+      </CardContent>
+    </Card>
+  </section>
+
+  {/* Latest Posts Section */}
   <section class="flex flex-col gap-y-4">
     <h2 class="text-2xl font-medium">Latest posts</h2>
     <ul class="flex flex-col gap-y-4">
@@ -90,6 +77,19 @@ const blog = await getRecentPosts(SITE.featuredPostCount)
           >&rarr;</span
         >
       </Link>
+    </div>
+  </section>
+
+  {/* Link to About Page */}
+  <section class="mb-8">
+    <div class="rounded-lg border p-6">
+      <p class="text-muted-foreground">
+        Learn more about my background and experience on the{' '}
+        <Link href="/about" class="text-foreground underline">
+          About page
+        </Link>
+        .
+      </p>
     </div>
   </section>
 </Layout>
