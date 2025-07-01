@@ -8,7 +8,6 @@ import Calendar from '@/components/Calendar.astro';
 import { SITE } from '@/consts';
 import Layout from '@/layouts/Layout.astro';
 import { getRecentPosts } from '@/lib/data-utils';
-import { Astro } from 'astro';
 
 const blog = await getRecentPosts(SITE.featuredPostCount);
 ---
